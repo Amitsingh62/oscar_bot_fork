@@ -101,15 +101,18 @@ st.set_page_config(
 )
 
 # Hide Streamlit Community Cloud "created by" badge
-st.markdown("""
+hide_badge = """
     <style>
-    .viewerBadge_container__r5tak,
-    .viewerBadge_link__qRIco,
-    [class*="viewerBadge"] {
+    /* Target the bottom-right hosted badge */
+    div[class*="profileContainer"],
+    div[class*="container"] > a[href*="streamlit.io/cloud"],
+    iframe[title="streamlit_cloud"] {
         display: none !important;
     }
+    footer {visibility: hidden;}
     </style>
-""", unsafe_allow_html=True)
+"""
+st.markdown(hide_badge, unsafe_allow_html=True)
 
 st.title("🎙️ OSCAR Conference Voice Assistant")
 st.caption("Speak your question about the conference – schedule, speakers, rooms, and more.")
